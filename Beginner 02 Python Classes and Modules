@@ -1,0 +1,535 @@
+#Python Classes and Modules
+
+#in python shell
+import modulename
+import os
+os.environ['PYTHONPATH']	#os module, environment variable
+#e.g. shows 'C:\\MYMOD'		#MYMOD directory is part of the Python path
+							#your module has to be in MYMOD directory in order to access/import the module
+
+import sys
+sys.path					#look at the path variable that the sys module contains
+							#look at the list of directories that Python will search
+							#add your module's filepath to the list object for Python to access the list and for Python to import your module
+							
+
+#append filepath and import module
+sys.path.append('C:\\Python34\\myscripts')		#append ur module's filepath
+import modulename								#import module
+
+
+#change filepath and import module
+os.chdir('C:\\Python34\\myscripts')
+
+
+#if you have changed your elements in the code editor
+#type these in the python shell
+import importlib		#to update the elements of your module that you want to import
+import modulename		#import module again to find the updated elements
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Define functions
+# Functions are defined with the "def" keyword in Python
+# return keyword exits from function with a value
+# functions can accept an unlimited number of arguments
+
+
+#all codes for functions section should be typed in the code editor
+import random					#import 'random' module
+faces = ('heads', 'tails')
+
+def subproc():					#sub routine = sub procedure
+    print('I do something')
+    print('But return nothing')
+	
+
+subproc()
+
+#print
+#I do something
+#But return nothing
+
+
+print(subproc())
+
+#no params to find
+#sub procedure only prints and does not return an explicit value, so
+
+#print
+#I do something
+#But return nothing
+#None
+
+
+def funcproc():
+	return random.choice(faces) 	#return causes an exit from the function with the value
+
+
+for flipcoin in range(5):
+    print(funcproc(), end=' ')
+print()		#print a blank line
+
+#print
+#tails tails heads heads heads
+
+
+def iadd(arg1, arg2):				#give arguments legal names
+    '''Perform inline + operations'''			#''' underneath function name is for doc string of your function
+    return arg1 + arg2
+	
+#iadd was a defined function for concatenation
+print('iadd(3, 5) ->', iadd(3,5))	#iadd(3, 5) -> 8
+print('iadd("dy", "namic") ->', iadd("dy", "namic")) #iadd("dy", "namic") -> dynamic
+
+
+def isum(*args):
+    '''Return a total of the numeric args'''
+    print('args ->', args)
+    total = 0
+    for arg in args:
+		total += arg
+	return total
+
+
+print('isum(1,2,3,4,5) ->', isum(1,2,3,4,5))
+#print args -> (1, 2, 3, 4, 5)			#inner isum prints the arguments first
+#print isum(1,2,3,4,5) -> 15			#then the outer print statement prints the total isum number returned from the function
+
+
+params = (5,4,3,2,1)
+print('isum(*params) ->', isum(*params))
+#args -> (5, 4, 3, 2, 1)				#inner isum prints args as defined in the isum function
+#isum(*params) -> 15					#outer print statement runs and prints the returned isum value
+
+def ilist(alpha, beta='default', gamma='assumed'):
+    return alpha, beta, gamma
+	
+
+print("ilist ('required") ->", ilist('required'])		#print ilist ('required") -> ('required', 'default', 'assumed')		#alpha is based on what you enter; beta and gamma have assigned values
+print("ilist('pos1', 'pos2', 'pos3') ->", 
+	ilist('pos1', 'pos2', 'pos3')) 		#print ilist ( 'pos1', 'pos2', 'pos3' ) -> ( 'pos1', ‘pos2', 'pos3')		#if subsequent elements are defined, these subsequent elements will override even the elements defined in the original function
+
+print("ilist(gamma='pos1', alpha='pos2', beta='pos3') ->",
+      ilist(gamma='pos1', alpha='pos2', beta='pos3'))	#print ilist (gamma='pos1', alpha='pos2', beta='pos3') -> ('pos1', 'pos2', 'pos3')	
+
+	  
+alphabet = {'alpha':'α', 'beta':'β', 'gamma':'Y'}
+print('ilist(**alphabet) ->', ilist(**alphabet))		#print ilist(**alphabet) -> ( 'α', 'β', 'Y' )
+
+
+#pass a (iflex) dictionary into a function
+def iflex(**kwargs):
+    print('kwargs ->', kwargs)
+    for key in kwargs:
+		print(key, '->', kwargs[key])		#keyword and value
+	return tuple(kwargs.values())
+
+alphabet = ()	
+print('iflex(**alphabet) ->', iflex(**alphabet))
+
+#kwargs -> { }
+#iflex(**alphabet) -> ()
+
+
+alphabet = {'delta':'α', 'sigma': '∑', 'pi': 'm'}
+print('iflex(**alphabet) ->', iflex(**alphabet))
+
+
+#*****complicated***
+#iflex prints kwargs and all the key and values
+#kwargs -> ( ' delta': ' σ', ' sigma' : ' ∑ ', 'pi' : ' m ' }
+#then go into the for loop and print each key and value combination
+#delta -> σ
+#sigma -> ∑
+#pi -> m
+#then come out of iflex function and execute the print iflex line; values at the back are values returned by the iflex function
+#iflex(**alphabet) -> ('σ', '∑', 'm')]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Run python module as a script in command prompt
+# in command prompt
+
+#run in command prompt; run script through python
+#python filepath
+python C:\python34\myscripts\greetings.py
+
+#run in command prompt; run script as an executable file
+C:\python34\myscripts\greetings.py
+
+#run in command prompt; run python shell
+python
+#then import sys module
+import sys
+#check sys.path filepath
+sys.path
+sys.path.append('C:\\python34\\myscripts')		#use 2 backslash \\
+#then import your module
+import greetings
+dir()		#check if your module has been imported
+#then run script
+greetings.greet()			#module.function1()
+greetings.test_greet()		#module.function2()
+greetings.sayings			#module.attribute
+							#module.variable
+							#module.list = shows us the elements in the list
+							
+greetings.__name__			#check that __name__ is in __main__ the main name space
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#command line arguments
+
+#enter these in the python code editor
+#argv_demo.py file
+'' Accept command line arguments to the module '''
+
+program = 'argv_demo.py'
+source = 'default.src'
+dest = 'default.dst'
+
+def show_config():
+    print('Here is the current configuration:')
+    print('Program: %s' % program)
+    print('Source: %s' % source)
+    print('Destination: %s' % dest)
+	
+if __name__ == '__main__':				#test module to make sure it is working properly; execute this block of code directly in the command line interface
+    import sys
+    print('Here is sys.argv: %s' % sys.argv)		#sys.argv allows command line arguments to be passed to a function in a module/script
+    if len(sys.argv) > 2: # Two or more arguments passed
+		program, source, dest = sys.argv[:3]
+	elif len(sys.argv) > 1: # Only one argument passed
+		program, source = sys.argv[:2]
+	else: # No arguments passed
+		program = sys.argv[0]
+	show_config()						#show_config() will print out information about the current configuration, the value of the program, source, and dest variables
+
+	
+#enter these in the command prompt window	
+
+#current prompt is: C:\Python34\myscripts>
+python argv_demo.py						#we used python scriptname.py to run the script, so __name__ == __main__ is TRUE as it is in the main namespace when run directly
+#output is:
+#Here is sys.argv: ['argv_demo.py']		#without even passing any arguments, except to Python itself, the name of the program, sys.argv, contains just the name of the script
+#Here is the current configuration:		#execute from show_config()
+#Program: argv_demo.py
+#Source: default.src
+#Destination: default.dst
+
+
+#enter these in the command prompt window	
+
+#current prompt is: C:\Python34\myscripts>
+python argv_demo.py one.src
+#output is:
+#Here is sys.argv: ['argv_demo.py', 'one.src']	#show you the arguments
+#Here is the current configuration:
+#Program: argv_demo.py
+#Source: one.src
+#Destination: default.dst
+
+
+
+#enter these in the command prompt window	
+
+#current prompt is: C:\Python34\myscripts>
+python argv_demo.py one.src two.dst
+#output is:
+#Here is sys.argv: ['argv_demo.py', 'one.src', 'two.dst']
+#Here is the current configuration:
+#Program: argv_demo.py
+#Source: one.src
+#Destination: two.src
+
+
+
+#enter these in the command prompt window	
+
+#current prompt is: C:\Python34\myscripts>
+argv_demo.py one.src two.dst			#eg dont use python as a prefix; execute script implicitly
+#The output is:							#sys.argv will not populate properly
+#Here is sys.argv: ['C:\\Python34\myscripts\argv_demo.py']
+#Here is the current configuration:
+#Program: C:\Python34\myscripts\argv_demo.py
+#Source: default.src
+#Destination: default.dst
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#class and type
+#with python 2.2, types have been unified with classes -> ALL are now types
+
+# back to python shell and code editor; no command line interface
+#argv_demo.py
+''' Python classes are all types.
+
+The builtin classes have their own types.
+User-defined classes can inherit their type
+from the builtin classes or the generic type.
+
+The type function can display the type of an object.
+The type function can also define a new type.
+The class statement is typically used to define a new type.
+'''
+
+print('The type of 1 is:', type(1))
+print('The type of [] is:', type([]))
+
+
+#output in shell
+#The type of 1 is: <class 'int’>
+#The type of [] is: <class 'list'>
+
+
+A_class = type('A_class', (), {})		#string to identify the class, a () tuple to specify base classes, and a {} dictionary to specify class attributes
+print('The type of A_class is:', type(A_class))
+an_inst = A_class()
+print('The type of an_inst is:', type(an_inst))
+
+#The type of A_class is: <class 'type’>
+#The type of an inst is: <class ‘__main__.A class’>
+
+
+A_type = type('A_type', (), {'start':1,'a_method':
+                           lambda self: 'This is an instance of ' +
+                           str(self.__class__)})
+
+type_inst = A_type()
+print('The type of A_type is:', type(A_type))
+#The type of A_type is: <class 'type' >
+				   
+print('The type of type_inst is:', type(type_inst))
+#The type of type_inst is: <class’__ main__.A_type’>						   
+
+print('Calling a_method returns:', type_inst.a_method())
+#Calling a_method returns:
+#This is an instance of <class ‘__main__.A_type’>
+
+
+class Basic():
+    start = 1
+
+    def a_method(self):
+		return 'This is an instance of ' + str(self.__class__)
+
+
+basic_inst = Basic()
+print('The type of Basic is:', type(Basic))
+#The type of Basic is: <class 'type' >
+
+print('The type of basic_inst is:', type(basic_inst))
+#The type of basic_inst is: <class ‘__main__. Basic’>
+
+print('Calling a_method returns:', basic_inst.a_method())
+#Calling a_method returns: This is an instance of <class ‘__main__.Basic’>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#docstrings
+''' The module docstring appears at top of the file		#''' with words at the start of the file will be the docstring of the file
+														#single/multi-line docstring
+If a longer description of more than one line is needed,
+then leave a blank line after the first line
+and then start a new paragraph with your longer description.
+
+Blank lines should also be used to separate multiple
+paragraphs as necessary.
+
+PEP 257 defines the technical details of docstrings.	#PEP=python enhancement proposal
+'''
+
+class DocumentMe():
+	'''The class docstring follows the same rules. '''
+	
+	def _init_(self): 
+		‘’’Method docstrings can also be used ‘’’
+		self. text = ''' Triple-quoted strings can also be
+used to hold WYSIWYG
+formatted string. '''
+
+def funk () :
+	''' Normal functions should have docstrings too. '''
+	pass
+	
+''' Docstrings can be used as long comments, as well. '''
+print ('The module docstring:', __doc__ )
+print ('The class docstring:' , DocumentMe.__doc__)		#classname.__doc__
+print ('A method docstring:' , DocumentMe.__init__.__doc__)
+print ('A function docstring:' , funk.__doc__)			#functionname.__doc__
+print ('Docstrings are used by Python\'s help function:')
+
+help(__name__)			#help on the name attribute
+help(DocumentME)		#help on function and class
+help(funk)
+	
+
+
+
+
+
+
+
+
+
+
+
+
+#code comments
+''' Module docstrings are a part of comments.
+
+Comments are documented in PEP 8. '''
+
+class Simple():
+    ''' Class docstrings should be included as comments. '''
+	
+	# Comments can be included at the same level of indentation.
+	# Block comments start each line the same way.
+	
+	def __init__(self, value): # Inline comments share a line with code.
+		''' Method docstrings are also important comments. '''
+		self.value = value
+
+    def double(self): # Avoid obvious comments
+		''' Return double the initial value '''
+		return 2 * self.value # triple the value
+        # Comments that conflict with the code
+        # are worse than no comments at all
+
+	def __mul__(self, value):
+		''' Implement the * operator for self.value * value '''
+		return self.value * value
+
+	def __rmul__(self, value):
+		''' Implement the * operator for reversed operands '''
+		return value * self.value    
+		
+
+def triple(value):
+    ''' Return three times the value '''
+    return 3 * value
+	
+	
+simple = Simple(10) # Create an instance of the Simple class
+print ('Double the simple value is:', simple.double()) # double using method
+print ('Triple the simple value is:', triple(simple)) # triple using function
+print ('Comments do not appear in the automatically generated help')
+
+help(__name__)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
