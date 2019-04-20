@@ -1,0 +1,1020 @@
+#Ctrl-D	exit from Python shell
+
+help(built_in_function_name)		#show you more info about the built_in_function_name
+Print('enter txt here')
+Print('txt1', variablename)			#print 'txt1' and string assigned to variablename	#',' will automatically add space between each txt segment
+Print('txt1' + variablename)		#print 'txt1' and string assigned to variablename	#'+' wont automatically add space between each txt segment
+
+#Assign user input to variable
+Variablename = input('the prompt you want to show your user')	#input function collects an input from the user
+
+#Multiple assignment / Assign more than 1 number to more than 1 variable on the same line
+x, y = number1, number2				#x = number1, y = number2
+
+
+#import modules
+import modulename
+print('txt1', modulename.functionname)	#e.g. print 'txt1' and output from running a function from the imported module
+del(modulename)
+
+import modulename as aliasname			#import module, assign modulename to alias
+print('txt1', aliasname.functionname)	#e.g. print 'txt1' and output from running a function from the imported module
+del(aliasname)
+
+from modulename import functionname1, functionname2			#import selective functions from modulename
+print('txt1', functionname)	#e.g. print 'txt1' and output from running a function from the imported module
+del(functionname1)
+del(functionname2)
+
+from modulename import functionname1 as alias1, functionname2 as alias2			#import selective functions from modulename, assign functionname to alias
+print('txt1', alias1)	#e.g. print 'txt1' and output from running a function from the imported module
+del(alias1)
+del(alias2)
+
+from modulename import *			#import ALL functions from modulename
+print('txt1', functionname)	#e.g. print 'txt1' and output from running a function from the imported module
+
+#Data type
+y = 0xA			#hexadecimal
+y = 0o12		#octal (Py 2 uses 012 - NOT 0o)
+y = 0b1012		#binary
+
+#Comparison
+==
+!=
+>
+>=
+<
+<=
+
+#Arithmetic
++ - * / ** (power) // (integer divisor) % (remainder)
+5 // 10 = 0
+5 % 10 = 5
+
+divmod(number1,number2) = ( // output, % output)
+abs(number1)		#absolute value
+int(number1)		#convert to integer
+float(number1)		#convert to float
+type(variablename)	#check data type: int or float
+round(number1, # of significant digits)		#round up number to # of significant digits
+
+
+x += y	#x = x+y; update x by adding y to existing value of x
+x -= y
+x *= y
+x /= y
+
+
+#infinity
+float('inf')		#infinity
+float('-inf')		#negative infinity
+float('-nan')		#not a number
+
+#check infinity 	or 		not a number
+print(math.isinf(variablename with inf assigned))		#check if something is infinity OR negative infinity
+print(math.isinf(variablename with -inf assigned))
+print(math.isnan(variablename with nan value assigned))	#check if something is not a number
+
+#math functions
+print(math.factorial(number))
+print(math.log(number))
+print(math.log10(number))
+print(math.exp(number))
+print(math.sqrt(number))
+#trigo functions
+print(math.cos(number))
+print(math.acos(number))			#arccos
+#hyperbolic functions
+print(math.asinh(number))
+print(math.acosh(number))
+#angular conversion
+print(math.degrees(number))
+print(math.radians(number))
+
+#boolean
+bool(x)			#TRUE if x is 1 or NOT 0; 
+#FALSE if x is 0, 
+#0.0, 
+#None, 
+#' '		empty sequence, 
+#[]			empty sequence, 
+#()			empty sequence, 
+#{}			empty mapping, 
+#set([])	empty mapping
+
+#Bitwise operators	(work on integers; dont work on floats)
+number1 | number2		#Or
+number1 ^ number2		#Xor
+number1 & number2		#And
+number1 << number2		#Left Shift
+number1 >> number2		#Right Shift
+number1 ~ number2		#Inversion
+
+
+#space words via new line, or tab
+line1\nline2\nline3
+sentence1\tsentence2\tsentence3
+print('\\')				#prints only 1 backslash '\'
+
+#string functions
+print('_' * 40)			#repeat 40 times
+print(len(stringname))	#print length
+print(max(stringname))
+print(min(stringname))
+print('')
+print(stringname1 in stringname2)		#check whether string1 is found in string 2
+print(stringname1 not in stringname2)	#check whether string1 is not found in string 2
+
+print(variablename.count('character'))	#count no of times this character appears
+print(variablename.index('character'))	#give the position of this character; 1st character is at position 0
+print(variablename.index('character', starting position no, ending position no))	#give the position of this character within the starting position and ending position no
+print(variablename.find('character'))	#check whether character is found in the variable; return '-1' if character isnt found in variable; case-sensitive
+print(variablename.startswith('character or string'))	#Check whether variable starts with specific character or string
+print(variablename.endswith("!\""))		#Check whether variable ends with exclamation mark
+print(variablename.upper("!\""))		#Upper case
+print(variablename.lower("!\""))		#Lower case
+
+variable = 'a,b,c'
+print(variablename.split(","))			#split up all the words based on the "," delimiter
+",".join(["a", "b", "c"])				#join sets of strings using a delimiter; returns a,b,c
+
+variable.isalpha()						#TRUE if variable contains letters
+variable.isdigit()						#TRUE if variable contains digits
+
+
+
+
+
+
+
+# Bytes
+# Values must be integers from 0-255 to represent a byte
+
+#encode decode method 1
+bytes_literal = b'Copyright \xc2\xa9'	#b will appear in front of your string
+print('bytes_literal =', bytes_literal) 
+
+print('bytes_literal.decode() ->',			#decode using unicode/UTF-8
+	bytes_literal.decode())
+	
+print('bytes_literal.decode("utf-16") ->',	#decode using unicode/UTF-16
+	bytes_literal.decode('utf-16'))
+
+	
+
+#encode decode method 2
+str_literal = 'Trademark ®'
+bytes_encoded = str_literal.encode()		#encode a string; variablename.encode()
+
+print('bytes_encoded =', bytes_encoded)		
+print('bytes_encoded.decode() ->',			#decode a string; variablename.decode()
+	bytes_encoded.decode())
+	
+print('bytes(str_literal) ->',				#decode a string; bytes(variablename, 'decoding method')
+	bytes(str_literal, 'utf-8')) 
+
+
+
+#encode decode method 3
+bytes_construct = bytes(str_literal, 'utf-8')	#decode; bytes(variablename, 'decoding method')
+print('bytes_construct.decode() ->',
+	bytes_construct.decode())
+
+	
+#encode decode method 4
+bytes_from_hex = bytes.fromhex('54 72 61 64 65 6d 61 72 6b 20 c2 ae')	#decode using hexadecimals
+print('bytes_from_hex.decode() ->',
+	bytes_from_hex.decode())
+	
+# A bytes sequence behaves similar to a string							#count or give position of a character
+print('str_literal.count("T") ->',
+	str_literal.count('T'))
+
+print('str_literal.index("T") ->',
+	str_literal.index('T'))
+
+# However, byte values are used instead of string values				#count or give position of a byte character
+print('bytes_encoded.count(0x54) ->',
+	bytes_encoded.count(0x54))
+print('bytes_encoded.index(0x54) ->',
+	bytes_encoded.index(0x54)) 
+	
+	
+The presenter clicks Run and selects Run Module. The following output is displayed in the Python Shell: bytes_literal = b 'Copyright \xc2\xa9' bytes_literal.decode() -> Copyright © bytes_literal.decode("utf-8") -> Copyright © bytes_literal.decode("utf-16") -> (in this instance the output shows a set of Asian characters) bytes_encoded = b 'Trademark ® \xc2\xae' bytes_encoded.decode() -> Trademark ® bytes(str_literal) -> b 'Trademark ® \xc2\xae' bytes_construct.decode() -> Trademark ® bytes_from_hex.decode() -> Trademark ® str_literal.count("T") -> 1 str_literal.index("T") -> 0 bytes_encoded.count(0x54) -> 1 bytes_encoded.index(0x54) -> 0]
+
+
+
+
+
+
+
+
+
+
+
+# Bytearray
+# The bytearray class provides a mutable sequence 
+# Values must be integers from 0-255 to represent a byte 
+
+#5 ways to create a bytearray object
+empty_array = bytearray() 		#empty array
+null_array = bytearray(11)		#initialise array with 11 elements which are 0/null values
+ints_array = bytearray((84, 114, 97, 100, 101, 109, 97, 114, 107, 32, 194, 174)) 	#initialise array by specifying sequence of bytes as integers
+str_array  =  bytearray('Trademark ®', 'utf-8') 	#initialise array by specifying your String and encoding method
+bytes_array = bytearray(b'Trademark ® \xc2\xae') 		#initialise array by specifying your bytes object
+
+
+print('bytes_array =', bytes_array) 				#print bytes_array in encoded form
+print('bytes_array.decode() ->', 					#print bytes_array in decoded form
+	bytes_array.decode()) 
+
+	
+# A bytearray sequence behaves similar to a string 
+str_literal = 'Trademark ®'
+
+print('str_literal.count("T") ->', 
+	str_literal.count('T')) 
+print('str_literal.index("T") ->',
+	str_literal.index('T')) 
+
+# However, byte values can also be used instead of string values 
+print('bytes_array.count(0x54) ->', 
+	bytes_array.count(0x54)) 
+print('bytes_array.index(0x54) ->', 
+	bytes_array.index(0x54)) 
+
+
+# Bytearray objects have methods to mutate them (i.e. add or remove elements from an array)
+bytes_array.append(32)							#append = add; append(32) = add a space to the end
+print('bytes_array =', bytes_array) 			#bytes_array = bytearray(b'Trademark \xc2\xae')
+
+bytes_array.extend((194, 174)) 					#extend = add; extend((194, 174)) = add 2 more bytes corresponding to the numbers to the end
+print('bytes_array =', bytes_array) 			#bytes_array = bytearray(b'Trademark \xc2\xae \xc2\xae')
+print('bytes_array.decode() ->', 				#decode array
+	bytes_array.decode())						#bytes_array = bytearray.decode() -> Trademark ® ® 
+
+bytes_array.remove(0x54)						#remove(a specific character) will remove a specific character; hexadecimal 0x54 is 'T'
+print('bytes_array=', bytes_array)				#bytes_array = bytearray.decode() -> rademark ® ® 
+
+bytes_array.insert(0, 0x54)						#insert(at a specific position, character to insert)
+print('bytes_array =', bytes_array)				#bytes_array = bytearray.decode() -> Trademark ® ® 
+
+bytes_array.pop()								#pop() removes last byte 
+bytes_array.pop()
+print('bytes_array.decode() ->', 				#bytes_array = bytearray.decode() -> Trademark ®
+	bytes_array.decode())						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# List
+# The list class provides a mutable sequence of elements
+# List - can append or reverse order of elements
+
+empty_list = list()						#OR empty_list = []
+print('empty_list ->', empty_list) 
+
+list_str = list('hello') 
+print('list_str ->', list_str) 
+
+list_tup = list((1, 2, (3, 5, 7))) 		#Tuple contains parantheses; 2 tuples here
+print('list_tup ->', list_tup) 			#Tuple 1- (1, 2, (3, 5, 7)), Tuple 2- (3, 5, 7)
+
+list_syn = [3, 4, 'a', 'b']				#list of numbers and letters/strings
+print('list_syn ->', list_syn)
+print("'a' in list_syn ->", 'a' in list_syn)	#print LHS "", then print TRUE/FALSE depending on whether integer/letter is found in the specified list object
+print("1 not in list_syn ->", 1 not in list_syn)
+
+empty_list.append(5)					#append 1 element to the end of the list
+print('empty_list ->', empty_list)
+
+empty_list.append([6, 7])				#append = add the new elements by appending 1 list within the list you want
+print('empty_list ->', empty_list)
+
+last_elem = empty_list.pop()			#pop() removes the inner list
+print('last_elem ->', last_elem)		#you can store the inner list in a new variable
+print('empty_list ->', empty_list)
+
+empty_list.extend([6, 7])				#extend  = add the new elements without adding 1 list within the list you want
+print('empty_list ->', empty_list)
+
+first_elem = empty_list.pop(0) print('first_elem ->', first_elem)		#pop(index no) removes the element in the position specified in the index no
+print('empty_list ->', empty_list)
+
+empty_list.insert(0, 10)				#insert(position no, element) to the list you want
+print('empty_list ->', empty_list)
+empty_list.insert(3, 100)
+print('empty_list ->', empty_list)
+empty_list.remove(7)					#remove(element)
+print('empty_list ->', empty_list)
+empty_list.clear()						#clear will clear all elements from the list and make it an empty list
+print('empty_list ->', empty_list)
+
+#list_str = list('hello') 
+print('list_str ->', list_str)			#print the individual elements of the string
+										#list_string -> ['h', 'e', 'l', 'l', 'o']
+print('min(list_str) ->', min(list_str))	#min(list object) finds the smallest element
+print('max(list_str) ->', max(list_str))	#max(list object) finds the largest element
+
+#sorting
+print('sorted(list_str) ->', sorted(list_str))	#sorted(list object) is a copy; not the original list
+print('list_str ->', list_str)					#sort element from smallest to largest
+
+list_str.sort()									#list object.sort() sorts the original list
+print('list_str ->', list_str)
+
+
+list_str.reverse()								#reverse order of the elements
+print('list_str ->', list_str)
+print('list_str.count("o") ->', list_str.count("o"))	#count no of elements with that character
+print('list_str.index("o") ->', list_str.index("o"))	#find position of the element; error if element is not found in the list
+print('len(list_str) ->', len(list_str))				#len(list object) = count no of elements in the list object
+
+
+
+
+
+
+
+
+# Tuple
+# The tuple class provides a immutable sequence of elements
+# Tuple - cant append or reverse order of elements
+
+empty_tuple = tuple()			#OR empty_tuple = ()	#create empty tuple
+print('empty_tuple ->', empty_tuple)
+
+tuple_str = tuple('hello')				#each character in the string element breaks up into individual character elements
+print('tuple_str ->', tuple_str)		#tuple_str -> ('h','e','l','l','o')
+
+tuple_list = tuple([1, 2, [3, 5, 7]])	#inner list within outer tuple; inner list remains as a list and not as a tuple
+print('tuple_list ->', tuple_list)		#tuple_list -> (1, 2, [3, 5, 7])
+
+
+singleton_tuple = (1,)					#singleton = only 1 elemen in the tuple
+print('singleton_tuple ->', singleton_tuple)	#singleton_tuple -> (1,)
+
+tuple_syn = (3, 4, 'a', 'b')
+print('tuple_syn ->', tuple_syn)
+print("'a' in tuple_syn ->", 'a' in tuple_syn)	#'a' is found in the tuple, so TRUE		#'a' in tuple_syn -> TRUE
+print("1 not in tuple_syn ->", 1 not in tuple_syn)		#1 in tuple_syn -> TRUE
+
+
+#tuple_str = tuple('hello')
+print('tuple_str ->', tuple_str)		#tuple_str -> ('h','e','l','l','o')
+print('min(tuple_str) ->', min(tuple_str))	#min(tuple_str) -> e
+print('max(tuple_str) ->', max(tuple_str))	#min(tuple_str) -> o
+print('sorted(tuple_str) ->', sorted(tuple_str))	#sort from smallest element to largest element; give you the list sequence and not a tuple sequence		#tuple does not allow reverse sequence
+print('tuple_str.count("o") ->', tuple_str.count("o"))	#count no of 'o'
+print('tuple_str.index("o") ->', tuple_str.index("o"))	#position of 'o'
+print('len(tuple_str) ->', len(tuple_str))				#no of elements in the tuple
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Slicing
+# Slicing allows access to one or more elements of a sequence 
+# Immutable sequences include tuples, strings, and bytes
+
+a_tuple = ('a', 1, 2, (3, 4))
+a_string = 'immutable'
+a_bytes = b'sequence'
+
+# Mutable sequences include lists and bytearrays
+
+a_list = [5, 6, 7, 8, (4, 5)]
+a_byte_array = bytearray(b'mutable')
+
+# Accessing is allowed in all sequences		#[index no starting from 0]
+print('a_tuple[0] ->', a_tuple[0])			#a_tuple[0] -> a
+print('a_string[1] ->', a_string[1])		#a_string[1] -> m
+print('a_bytes[2] ->', a_bytes[2])			#return byte value of an element
+print('a_list[3] ->', a_list[3])			#a_list[3] -> 8
+print('a_byte_array[4] ->', a_byte_array[4])	
+
+# Negative slicing
+# Negative indexes are from the end
+print('a_tuple[-1] ->', a_tuple[-1])		#-1 refers to last element; (3, 4)
+print('a_string[-2] ->', a_string[-2])		#-2 = 2md last element; l
+print('a_bytes[-3] ->', a_bytes[-3])
+print('a_list[-4] ->', a_list[-4])			#6
+print('a_byte_array[-5] ->', a_byte_array[-5])
+
+# Subslices can be accessed with two indexes
+print('a_list[0:2] ->', a_list[0:2])		#list[start at position no:up to but not including position no]
+print('a_list[:2] ->', a_list[:2])			#up to, but not including 3rd element
+print('a_list[2:5] ->', a_list[2:5])
+print('a_list[2:] ->', a_list[2:])			#from element 3 onwards
+print('a_list[:] ->', a_list[:])			#ALL elements
+
+list_ref = a_list							#variable links instead of copying and pasting to create the list; any updates will be updated in the variable and the original list
+print('a_list is list_ref ->', a_list is list_ref)		#a_list is list_ref -> TRUE; because they reference the same object
+
+list_copy = a_list[:]						#variable copy and paste contents from the original list; updates to list or variable will not be reflected in the other list/variable
+print('a_list is list_copy ->', a_list is list_copy)	#a_list is list_copy -> FALSE; because they reference different objects
+
+
+
+
+# Steps can be taken with a third parameter
+print('a_list[::2] ->', a_list[::2])		#ALL elements in steps of 2, ie skip every other entry
+print('a_list[1:4:2] ->', a_list[1:4:2])	#start from 2nd element up to but not including 5th element, in steps of 2
+print('a_string[::-1] ->', a_string[::-1])	#ALL elements in reverse order
+
+
+# Use additional slices to access elements with sequences
+print('a_list ->', a_list)					#a_list -> [5, 6, 7, 8, (4, 5)]]
+print('a_list[4] ->', a_list[4])			#a_list[4] -> [(4, 5)]]
+print('a_list[4][0] ->', a_list[4][0])		#[position of element within outer list][position of element within inner list]; so we get 4
+print('a_list[4][1] ->', a_list[4][1])		#we get 5
+
+
+# Mutable sequences can be updated with slices
+print('a_list ->', a_list)
+
+a_list[0] = 'five'							#assign a new value in place of the original value at this position in the list object
+print('a_list ->', a_list)					#a_list -> ['five', 6, 7, 8, (4, 5)]
+
+a_list[1:4] = [10, 11, 12]					#replace from position no, up to but not including position no
+print('a_list ->', a_list)					#a_list -> ['five', 10, 11, 12, (4, 5)]
+
+
+# A slice object can be used in the [ ] for slicing
+a_slice = slice(4)							#slice(elements up to but not including position no), assign slice to variable
+print('a_slice ->', a_slice)				#a_slice ->(None, 4, None); No specified starting position so start from 0; up to position 4; no steps so increment by +1 per step as per default
+print('a_list[a_slice] ->', a_list[a_slice]) #a_list[a_slice] -> ['five', 10, 11, 12]
+
+a_slice = slice(1,5)						#slice(start at, end at but not including)
+print('a_slice ->', a_slice)				#a_slice ->(1, 5, None); start at position 1 and end at but not including position 5
+print('a_list[a_slice] ->', a_list[a_slice])	#a_list[a_slice] -> [10, 11, 12, (4, 5)]
+
+a_slice = slice(1,5,2)						#slice(start at, end at but not including, step value)
+print('a_slice ->', a_slice)				#a_slice -> (1,5,2)
+print('a_list[a_slice] ->', a_list[a_slice])	#a_list[a_slice] -> [10, 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Range
+# The range function generates a sequence of integers
+
+a_range = range(5)					#range(no of elements) = create a list of values starting from 0
+print('a_range ->', a_range)		#a_range -> range(0, 5); range of 5 values starting from 0, in increment of 1 step by default
+print('list(a_range) ->', list(a_range))	#list(a_range) -> [0, 1, 2, 3, 4]
+
+# It is often used to execute a "for" loop a number of times
+for i in range(5):
+	print(i, end=' ')	# executed five times; print the integer i and a space in between
+print()								#0 1 2 3 4
+
+# It is similar to the slice function with a start, stop and step
+a_range = range(10)			# stop only
+print('list(a_range) ->', list(a_range))	#stop at position 10
+
+a_range = range(10, 16)		# start and stop
+print('list(a_range) ->', list(a_range))	#from position 10 to but not including position 16
+
+a_range = range(10, -1, -1)	# start, stop and step
+print('list(a_range) ->', list(a_range))	#from 10, ... , 0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Set
+# The set class provides a mapping of unique immutable elements
+
+empty_set = set()					#set()
+print('empty_set ->', empty_set)
+
+alpha = set(('a', 'b', 'c', 'd'))	#set = an unordered list
+print('alpha ->', alpha)
+
+
+dup_list = ['c', 'd', 'c', 'd', 'e', 'f']
+
+beta = set(dup_list)				#set(your list) removes duplicates
+print('beta ->', beta)				#beta -> ['c', 'd', 'e', 'f']
+uniq_list = list(beta)				#convert (unique) set into list
+print('uniq_list ->', uniq_list)
+
+gamma = alpha.union(beta)			#set1.union(set2) gives us unique elements in both sets 1 and 2
+print('gamma ->', gamma)
+gamma = alpha|beta					# | = union
+print('gamma ->', gamma)
+
+delta = alpha.intersection(beta)	#set1.intersection(set2)
+print('delta ->', delta)			#show shared elements
+delta = alpha & beta				# & = intersection
+print('delta ->', delta)
+
+epsilon = alpha.difference(beta)	#set1.difference(set2)
+print('epsilon ->', epsilon)		#show elements in set1 not shared with set2
+epsilon = alpha - beta				# - = difference
+print('epsilon ->', epsilon)
+
+
+
+eta = alpha.symmetric_difference(beta)	#set1.symmetric_difference(set2)
+print('eta ->', eta)				#show elements not shared between both sets
+eta = alpha ^ beta					# ^ = symmetric_difference
+print('eta ->', eta)				#eta -> {'f', 'e', 'b', 'a'}
+
+
+
+print('epsilon.isdisjoint(delta) ->', epsilon.isdisjoint(delta))	#set1.isdisjoint(set2) = whether both sets have the same elements, TRUE		#epsilon.isdisjoint(delta) -> True
+print('epsilon.isdisjoint(eta) ->', epsilon.isdisjoint(eta))		#if some elements are the same, FALSE										#epsilon.isdisjoint(eta) -> False
+print('epsilon.issubset(eta) ->', epsilon.issubset(eta))			#issubset is more strict; set1.issubset(set2) = whether set 1 has all the elements in set 2/ is set 1 a subset of set 2
+print('epsilon.issubset(beta) ->', epsilon.issubset(beta))			#epsilon contains only some elements of beta, so FALSE
+
+print('eta.issuperset(epsilon) ->', eta.issuperset(epsilon))		#eta.issuperset(epsilon) -> True; eta contains some elements in epsilon, so TRUE
+print('beta.issuperset(epsilon) ->', beta.issuperset(epsilon))		#beta.issuperset(epsilon) -> False; beta does not contain any element in epsilon, so FALSE
+
+feta = frozenset(eta)
+# frozensets are immutable without updating methods
+print('feta ->', feta)			#feta -> frozenset ({'f', 'e', 'a', 'b'})
+
+
+zeta = set()
+print('zeta ->', zeta)			#zeta -> set()
+zeta.add(3)
+print('zeta ->', zeta)			#zeta -> set(3)
+zeta.add(3)						#adding the same element will not show up in the set
+print('zeta ->', zeta)			#zeta -> set(3)
+zeta.add(4)
+print('zeta ->', zeta) 			#zeta -> set(3,4)
+print('zeta ->', zeta)			#zeta -> set() zeta -> {3} zeta -> {3} zeta -> {3, 4}
+
+print('gamma ->', gamma)		#gamma ->  {'f', 'd', 'c', 'e', 'b', 'a'}
+gamma.discard('a')				#discard('element')
+print('gamma ->', gamma)		#gamma ->  {'f', 'd', 'c', 'e', 'b'}
+gamma.discard('z')				#discard an element not found in the set
+print('gamma ->', gamma)
+gamma.remove('b')				
+print('gamma ->', gamma)		#gamma -> {'f', 'd', 'c', 'e'}
+random_element = gamma.pop()	#pop removes a random element
+print('random_element ->', random_element)		#random_element -> f
+print('gamma ->', gamma)		#gamma -> {'d', 'c', 'e'}	; the remaining elements
+
+
+zeta_ref = zeta
+zeta_copy = zeta.copy()			#create a copy of the original set instead of linking to the original set
+zeta.clear()					#clear ALL elements in the set
+print('zeta ->', zeta)			#zeta -> set()
+print('zeta_ref ->', zeta_ref)	#reference set links to the empty original set
+print('zeta_copy ->', zeta_copy)	#zeta_copy -> {3, 4}
+
+
+print('alpha ->', alpha)		#alpha -> ['a', 'b', 'd', 'c']
+alpha_diff = alpha.copy()		#make a copy of the alpha set before you use each method
+
+
+
+#alpha = set(('a', 'b', 'c', 'd'))
+#beta = set(('c', 'd', 'e', 'f'))
+alpha_diff.difference_update(beta)	#difference_update = find elements in alpha_diff/set1 not found in beta/set2, then update the elements of alpha_diff to only include these few elements
+print('alpha_diff ->', alpha_diff)	#alpha_diff -> ['a', 'b']
+
+alpha_intersect = alpha.copy()	#make a copy of the alpha set before you use each method
+alpha_intersect.intersection_update(beta)
+print('alpha_intersect ->', alpha_intersect)	#alpha_intersect -> ['d', 'c']
+
+alpha_sym_diff = alpha.copy()					#make a copy of the alpha set before you use each method
+alpha_sym_diff.symmetric_difference_update(beta)	#symmetric_difference_update finds ALL elements present in 1 set but not the other set
+print('alpha_sym_diff ->', alpha_sym_diff)		#alpha_sym_diff -> ['f', 'e', 'b', 'a']
+
+
+alpha_union = alpha.copy()
+alpha_union.update(beta)						#update will add all terms from beta/set2 to alpha_union/set1
+print('alpha_union ->', alpha_union)			#alpha_union -> ['f', 'd', 'c', 'e', 'b', 'a']
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Dictionary
+# The dict class allows creating an associative array 
+# of keys and values. Keys must be unique, immutable objects.
+# values do not have to be unique
+
+empty_dict = dict()		#or empty_dict = {}
+print('empty_dict ->', empty_dict)
+
+dict_syn = {'k1': 'v1', 'k2': 'v2'}	#(key1:value1, key2:value2)
+#or dict_syn = dict(k1='v1', k2='v2')		#(key1=value1, key2=value2)
+print('dict_syn ->', dict_syn)				#dict_syn -> {'k1': 'v1', 'k2': 'v2'}
+print("dict_syn['k2']  ->", dict_syn['k2'])	#dict_syn['k2']  -> v2	#dict_syn[key] gives us the value corresponding to the key
+
+dict_syn['k3'] = 'v3'
+print('dict_syn ->', dict_syn)				#{'k1': 'v1', 'k2': 'v2', 'k3': 'v3'}
+del(dict_syn['k3'])
+print('dict_syn ->', dict_syn)				#{'k1': 'v1', 'k2': 'v2'}
+dict_syn['k1']=1
+print('dict_syn ->', dict_syn)				#{'k1': 1, 'k2': 'v2'}
+dict_syn['k2']=1
+print('dict_syn ->', dict_syn)				#{'k1': 1, 'k2': 1}; keys must be unique, values do not have to be unique
+
+dict_ref = dict_syn
+dict_copy = dict_syn.copy()					#.copy dictionary object
+dict_syn.clear()							#clear original dictionary object
+print('dict_syn ->', dict_syn)				#dict_syn -> ()
+print('dict_ref ->', dict_ref)				#dict_ref -> ()
+print('dict_copy ->', dict_copy)			#dict_copy -> {'k1': 1, 'k2': 1}
+
+key_list = dict_copy.keys()					#.keys copies only the keys
+print('key_list ->', key_list)				#key_list -> dict_keys({'k1', 'k2'})
+
+value_list = dict_copy.values()				#.values copies only values
+print('value_list ->', value_list)			#value_list -> dict_values({1, 1})
+
+mapping = zip(key_list, value_list)			#with a list of keys and values, use zip() function to create a mapping/zip object
+print('mapping ->', mapping)				#mapping -> <zip object at 0x03455c38>
+
+dict_new = dict(mapping)					#use dict(mapping) to create a dictionary from our mapping object
+print('dict_new ->', dict_new)				#dict_new -> {'k1': 1, 'k2': 1}
+
+print (" 'k3' in dict_new ->", 'k3' in dict_new)		#'k3' in dict_new -> False
+print (" 'k3' in dict_new ->", 'k3' not in dict_new)	#'k3' in dict_new -> True
+
+
+
+
+
+---------------------------------------
+#extra set of codes in Dictionary module not went through in video
+mapping = dict_new.items()
+print('mapping ->', mapping)
+
+dict_same_value = dict.fromkeys(key_list, 0)
+print('dict_same_value ->', dict_same_value)
+
+value1 = dict_new['k1']
+print('value1 ->', value1)
+
+value1 = dict_new.get('k1')
+print('value1 ->', value1)
+
+default_value = dict_new.get('non-existent', 0)
+print('default_value ->', default_value)
+
+value2 = dict_new.pop('k2')
+print('value2 ->', value2)
+print('dict_new ->', dict_new)
+
+default_value = dict_new.pop('non-existent', 0)
+random_item = dict_new.popitem()
+print('random_item ->', random_item)
+print('dict_new ->', dict_new)
+print("'k3' in dict_new ->", 'k3' in dict_new)
+
+value3 = dict_new.setdefault('k3', 3)
+print('value3 ->', value3)
+print("'k3' in dict_new ->", 'k3' in dict_new)
+print('dict_new ->', dict_new)
+
+value3 = dict_new.setdefault('k3', 0)
+print('value3 ->', value3)
+print('dict_new ->', dict_new)
+---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# While loop
+# The while loop executes a suite of code if its condition is True
+
+counter = 3
+while counter > 0:
+	print("Counting down:", counter)
+	counter -= 1
+
+#As 3 is > 0, prints out
+#Counting down: 3			#go through the loop and execute the next loop
+#Counting down: 2
+#Counting down: 1
+
+
+while counter > 0:			#counter is 0; not >0, so FALSE, so the print statements will never be executed
+    print('Never executes suite')
+    print('when condition is False')
+
+	
+while 1:					#while 1 = while TRUE; always execute at least once
+    print('Executes at least once')
+    if not counter:			#counter variable is still = 0; so NOT 0 = 1 = True -> execute next line i.e. break
+		break				#break breaks out of the while loop
+
+		
+names = ['Tom', 'Ellen']	#empty list will be FALSE and wont execute; here the list has items, so the while loop will execute
+while names:
+    print(names.pop(), 'is going')
+
+#remove an element randomly, then print out according to the words and the loop
+#Ellen is going
+#Tom is going
+
+
+results = [1, 0, 1]
+processed = 0
+passed = 0
+while results:				#if there is an element in the set, execute while loop, otherwise skip while loop
+    processed += 1			#process counter +1
+    result = results.pop()	#pop a random element
+    if not result:			#if NOT 1, i.e. if 0/FALSE; dont execute continue statement, move to next subsegment and execute pass counter +1
+		continue			#if NOT 0, i.e. if 1/TRUE; execute continue statement and move to the start of the while loop straight away
+	passed += 1				
+else:						#else if all elements have been exhausted
+    print('Processed:', processed, 'Passed:', passed)
+
+
+#print
+#Processed: 3 Passed: 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# For loop
+# The for loop executes a suite of code for each element
+
+for elem in range(5):				#start at 0, go up to but not including 5
+    print(elem, end=' ')
+print()								#print 0 1 2 3 4 
+
+for elem in range(1, 6):
+    print(elem, end=' ')
+print()								#print 1 2 3 4 5
+	
+for elem in range(5, -1, -1):
+    print('Countdown:', elem)		
+	
+#print
+#Countdown: 5
+#Countdown: 4
+#Countdown: 3
+#Countdown: 2
+#Countdown: 1
+#Countdown: 0
+	
+	
+for char in 'string':		#iterate over each character in the string
+    print(char, end=' ')
+print()						#print s t r i n g
+	
+	
+for tup in (1, 3, 5):
+    print(tup)
+
+#print
+#1
+#3
+#5
+	
+for val in ['hey', 'hi', 'whoa']:		#iterate over a list of values
+    print(val)
+
+#print
+#Hey
+#hi
+#whoa
+	
+
+greek = {'alpha': 1, 'beta': 2, 'gamma': 3}		#iterate over elements in a dictionary object
+for key in greek:								#for each key
+    if key == 'beta':							#if key is beta, go back to start of the for loop, then continue for loop with the next element
+		continue								
+	print(key, greek[key])						#if key is not beta, print out key and the value based on the key, i.e. greek(key) or dictionary(key)
+		
+#print
+#gamma 3
+#alpha 1
+		
+
+for outer in range(2,10):
+    for inner in range(2, outer):				#start from 2, stop at but not including the outer number
+		if not outer % inner:					#find remainder; if there is remainder, ie TRUE; NOT TRUE = FALSE; dont execute the print code; move back to the inner for loop
+			print(outer, '=', inner, '*', int(outer / inner))	#if there is no remainder, ie FALSE; NOT FALSE = TRUE; execute the print code, then break and move back to the next number in the inner for loop
+            break
+	else:									#no has remainder
+		print(outer, 'is prime')
+			
+#print
+#2 is prime
+#3 is prime
+#4 = 2 * 2
+#5 is prime
+#6 = 2 * 3
+#7 is prime
+#8 = 2 * 4
+#9 = 3 * 3
+
+
+#1st iteration outer starts at 2; inner starts at 2, up to 2, i.e. up to 1, so inner loop never executes; so go to the else clause and print that the number is a prime
+#2nd iteration outer is 3; inner is 2, up to 3, so 3%2=1; there is remainder, ie TRUE; NOT TRUE = FALSE; dont execute the print code; move back to the inner for loop
+#3rd iteration outer remains at 3; inner is up to but not including 3; so move on to the else clause and print that the number is a prime
+
+#outer=4; inner=2 to 4; start with inner 2; 4%2=0, no remainder; NOT 0 = TRUE, so execute print statement and break to go up to the inner for loop again
+#outer=4; inner now 3; 4%3=1, there is remainder/TRUE; NOT TRUE = FALSE; skip print statement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# If statement
+# The if statement allows for conditional execution
+# If Elif Else
+
+age = 0
+if age:						#condition is FALSE, so wont execute
+    print('False conditions do not execute')
+    print('So, these statements won\'t print')
+	
+age = 1
+if age:						#condition is TRUE, so execute
+    print('True conditions execute the')
+    print('indented suite of code')
+	
+age = 17
+if age >= 18:				#condition is FALSE, so move on to else clause
+    print('You are old enough to vote')
+else:
+    print('You are too young to vote')
+	
+score = 91					
+print('The grade was:', end=' ')	#print 'The grade was: '
+if score < 60:						#FALSE, so move on to elif
+    print('F')
+elif 60 <= score < 70:				#FALSE, so move on to elif
+    print('D')
+elif 70 <= score < 79:				#FALSE, so move on to elif
+    print('C')
+elif 80 <= score < 90:				#FALSE, so move on to elif
+    print('B')
+elif 90 <= score <= 100:			#print 'A'
+    print('A')
+else:
+    print('Impossible!')
+	
+debug = True
+if debug: print('Score was:', score)	#print 'Score was: 91'
+
+if score > 59:
+    result = 'pass'
+else:
+    result = 'fail'					#set variable result = pass/fail
+if debug: print('Result was:', result)	#then have another if statement to print pass/fail
+
+score = 40
+if debug: print('Score was:', score)	#Score was: 40
+result = 'pass' if score > 59 else 'fail'	#set result=fail
+if debug: print('Result was:', result)	#Result was: fail
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Tutorial - Get name, then show first and last name at their original positions but characters are in reverse order
+
+#method 1
+name = input ('First and last name to reverse -> ')
+words = name.split("")			#words = ['firstname','lastname']
+
+for word in words:				#for each element in the list
+	lastindex = len(word) -1	#calculate position of last character
+    for index in range(lastindex, -1, -1):	#start from last position, up to and including first position, in reverse order
+		print(word[index], end="")			#print the character at a particular position of the word; "" = do not leave a space between characters
+	print(end=' ')				#once the word has been printed, print a space between each word
+print(end='\n')					#'\n' = move on to the next line
+
+#method 2
+name = input ('First and last name to reverse -> ')
+first, last  = name.split()		#first = firstname, last = lastname
+print(first[::-1], last[::-1])	#print each string; all characters in reverse order
+
+
+
+
+
+
+
+
+
